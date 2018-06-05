@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    bootstrap-servers: http://192.168.1.11:9092
+    producer:
+      acks: all                          #0 不保证数据一定发送成功,发送效率最高   1 保证leader成功并持久化,不保证follower是否写成功   all最强保证,效率最低
+    consumer:
+      group-id: AQGRS
+      enable-auto-commit: false          #手动提交offset
+    listener:
+      concurrency: 3                     #监听消费线程数
+      poll-timeout: 10000
+      ack-mode: MANUAL_IMMEDIATE         #手动确认模式
+spider:
+     sk:
+       suzhou:
+         login_url: http://220.248.245.251:8876/Login.aspx
+         data_url: http://220.248.245.251:8876/Handler/Atmosphere/Data/DayReportCheck.ashx?action=GetNetStatus&type=1&timetype=1&datatype=1&pointtype=1&ext=0&_
+         username: lsqing
+         password: SZ9936758
+       liangzhou:
+         login_url: http://118.183.188.201:81
+         data_url: http://118.183.188.201:81/Page/Component/91d0af2c-2476-46a1-a1cc-4adbbda7895d
+         username: 凉州区
+         password: 111
+     gk:
+       city_real: http://106.37.208.233:20035/ClientBin/Env-CnemcPublish-RiaServices-EnvCnemcPublishDomainService.svc/binary/GetCityAQIPublishLives
+       stations: http://106.37.208.233:20035/ClientBin/Env-CnemcPublish-RiaServices-EnvCnemcPublishDomainService.svc/binary/GetStationConfigs
+
+debug: false
